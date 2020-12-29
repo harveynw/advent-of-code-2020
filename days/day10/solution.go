@@ -11,8 +11,8 @@ import (
 func main() {
 	adaptors := Adaptors("input.txt")
 
-	oneDiffs, threeDiffs := countDifferences(adaptors)
-	fmt.Printf("Solution 1: %v\n", oneDiffs*threeDiffs)
+	diffs := countDifferences(adaptors)
+	fmt.Printf("Solution 1: %v\n", diffs[1]*diffs[3])
 	fmt.Printf("Solution 2: %v\n", combinations(adaptors, len(adaptors)-1))
 }
 
@@ -48,18 +48,10 @@ func Adaptors(filename string) []int {
 	return append(append([]int{0}, adaptors...), adaptors[len(parsed)-1]+3)
 }
 
-func countDifferences(adaptors []int) (int, int) {
-	oneJoltDiffs, threeJoltDiffs := 0, 0
+func countDifferences(adaptors []int) map[int]int {
+	diffs := make(map[int]int)
 	for i, jolt := range adaptors[1:] {
-		diff := jolt - adaptors[i]
-
-		if diff == 1 {
-			oneJoltDiffs++
-		}
-		if diff == 3 {
-			threeJoltDiffs++
-		}
+		diffs[jolt - adaptors[i]]++
 	}
-
-	return oneJoltDiffs, threeJoltDiffs
+	return diffs
 }
