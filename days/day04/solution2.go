@@ -1,13 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
 	"log"
+	"regexp"
 	"strconv"
 	"strings"
-	"io/ioutil"
-	"bytes"
-	"regexp"
 )
 
 func main() {

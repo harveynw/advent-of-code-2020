@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"io/ioutil"
 	"bytes"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"regexp"
 	"strconv"
 	"strings"
-	"regexp"
 )
 
 func main() {
@@ -90,7 +90,7 @@ func isValid(passport map[string]string) bool {
 	}
 
 	ecl := passport["ecl"]
-	validColours := map[string]bool {
+	validColours := map[string]bool{
 		"amb": true,
 		"blu": true,
 		"brn": true,

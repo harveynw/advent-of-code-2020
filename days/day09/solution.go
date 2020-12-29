@@ -1,10 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"strconv"
-	"bytes"
 )
 
 func main() {
@@ -26,11 +26,11 @@ func main() {
 
 	setLength := 2
 	for {
-		for i := 0; i + setLength - 1 < len(numbers); i++ {
-			if contiguousSum(i, i + setLength - 1, numbers) == solution {
-				min, max := minMaxIntSlice(numbers[i:i+setLength])
+		for i := 0; i+setLength-1 < len(numbers); i++ {
+			if contiguousSum(i, i+setLength-1, numbers) == solution {
+				min, max := minMaxIntSlice(numbers[i : i+setLength])
 				fmt.Printf("Solution 1: %v\n", solution)
-				fmt.Printf("Solution 2: %v\n", min + max)
+				fmt.Printf("Solution 2: %v\n", min+max)
 				return
 			}
 		}
@@ -44,7 +44,7 @@ func valid(idx int, numbers []int) bool {
 
 	for i := 0; i < l; i++ {
 		for j := 0; j < l; j++ {
-			if preamble[i] + preamble[j] == numbers[idx] {
+			if preamble[i]+preamble[j] == numbers[idx] {
 				return true
 			}
 		}
@@ -69,10 +69,10 @@ func minMaxIntSlice(input []int) (int, int) {
 }
 
 func max(x, y int) int {
-    if x < y {
-        return y
-    }
-    return x
+	if x < y {
+		return y
+	}
+	return x
 }
 
 func contiguousSum(i int, j int, numbers []int) int {

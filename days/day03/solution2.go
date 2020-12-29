@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
-	"io"
-	"fmt"
-	"log"
 	"bufio"
+	"fmt"
+	"io"
+	"log"
+	"os"
 )
 
 func main() {
@@ -21,11 +21,11 @@ func main() {
 	}()
 
 	multiple := 1
-	multiple *= testSlope([2]int{1,1}, file)
-	multiple *= testSlope([2]int{3,1}, file)
-	multiple *= testSlope([2]int{5,1}, file)
-	multiple *= testSlope([2]int{7,1}, file)
-	multiple *= testSlope([2]int{1,2}, file)
+	multiple *= testSlope([2]int{1, 1}, file)
+	multiple *= testSlope([2]int{3, 1}, file)
+	multiple *= testSlope([2]int{5, 1}, file)
+	multiple *= testSlope([2]int{7, 1}, file)
+	multiple *= testSlope([2]int{1, 2}, file)
 
 	fmt.Printf("Final value: %v\n", multiple)
 }

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
+	"bufio"
 	"fmt"
 	"log"
-	"bufio"
+	"os"
 )
 
 func main() {

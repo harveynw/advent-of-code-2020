@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"bytes"
+	"fmt"
 	"io/ioutil"
+	"log"
 	"math/rand"
 )
 
@@ -17,9 +17,9 @@ func main() {
 	seats := parseSeats(data)
 	seats = quicksort(seats)
 
-	for i, _ := range seats {
-		if computeSeatID(seats[i+1])-computeSeatID(seats[i])>1 {
-			fmt.Println(computeSeatID(seats[i])+1)
+	for i := range seats {
+		if computeSeatID(seats[i+1])-computeSeatID(seats[i]) > 1 {
+			fmt.Println(computeSeatID(seats[i]) + 1)
 			return
 		}
 	}
@@ -30,7 +30,7 @@ func parseSeats(data []byte) [][]bool {
 
 	seats := make([][]bool, len(lines))
 	for i := 0; i < len(lines); i++ {
-	    seats[i] = make([]bool, 10)
+		seats[i] = make([]bool, 10)
 	}
 
 	for i, line := range lines {
@@ -52,16 +52,16 @@ func quicksort(seats [][]bool) [][]bool {
 			if s1[i] != s2[i] {
 				return s2[i]
 			}
-		} 
+		}
 		return false
 	}
 
-	l, r := 0, len(seats) - 1
+	l, r := 0, len(seats)-1
 	pivot := rand.Int() % len(seats)
 
 	seats[pivot], seats[r] = seats[r], seats[pivot]
 
-	for i, _ := range seats {
+	for i := range seats {
 		if compare(seats[i], seats[r]) {
 			seats[l], seats[i] = seats[i], seats[l]
 			l++

@@ -1,21 +1,21 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"bytes"
+	"fmt"
 	"io/ioutil"
+	"log"
 	"regexp"
 	"strconv"
 )
 
 type Bag struct {
-	name string
+	name     string
 	children []BagRequirement
 }
 
 type BagRequirement struct {
-	name string
+	name   string
 	amount int
 }
 
@@ -82,8 +82,8 @@ func countParents(bags []Bag, target string) ([]Bag, int) {
 	var newTargets []string
 
 	removeElement := func(i int) {
-	    bags[i] = bags[len(bags)-1]
-	    bags = bags[:len(bags)-1]
+		bags[i] = bags[len(bags)-1]
+		bags = bags[:len(bags)-1]
 	}
 
 	for i := len(bags) - 1; i >= 0; i-- {

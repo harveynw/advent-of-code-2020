@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"bytes"
-	"math"
+	"fmt"
 	"io/ioutil"
+	"log"
+	"math"
 )
 
 func main() {
@@ -51,19 +51,19 @@ func compareSeats(seatA []byte, seatB []byte) bool {
 func computeSeatID(seat []byte) int {
 	row := 0
 
-	for i,val := range seat[0:7] {
+	for i, val := range seat[0:7] {
 		if val == 'B' {
-			row += int(math.Pow(2.0,float64(6-i)))
+			row += int(math.Pow(2.0, float64(6-i)))
 		}
 	}
 
 	column := 0
 
-	for i,val := range seat[7:10] {
+	for i, val := range seat[7:10] {
 		if val == 'R' {
-			column += int(math.Pow(2.0,float64(2-i)))
+			column += int(math.Pow(2.0, float64(2-i)))
 		}
 	}
 
-	return row * 8 + column
+	return row*8 + column
 }

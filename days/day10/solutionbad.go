@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
-	"bytes"
-	"strconv"
-	"math/rand"
 	"math"
+	"math/rand"
+	"strconv"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 		adaptors[i], _ = strconv.Atoi(string(line))
 	}
 	adaptors = quicksort(adaptors)
-	
+
 	oneDiffs, threeDiffs := countDifferences(adaptors)
 	fmt.Printf("Solution 1: %v\n", oneDiffs*threeDiffs)
 	fmt.Printf("Solution 2: %v\n", countCombinations(adaptors))
@@ -29,7 +29,7 @@ func countCombinations(adaptors []int) int {
 
 	combinations := 1
 
-	for i := 0; i < len(droppable) - 1; i++ {
+	for i := 0; i < len(droppable)-1; i++ {
 		if droppable[i] {
 			start := int(i)
 			for droppable[i] {
@@ -47,11 +47,11 @@ func countCombinations(adaptors []int) int {
 
 func droppableAdaptors(adaptors []int) []bool {
 	droppable := make([]bool, len(adaptors))
-	for i := 0; i < len(adaptors) - 1; i++ {
+	for i := 0; i < len(adaptors)-1; i++ {
 		if i == 0 {
 			droppable[i] = adaptors[1] <= 3
 		} else {
-			droppable[i] = adaptors[i-1] + 3 >= adaptors[i+1]
+			droppable[i] = adaptors[i-1]+3 >= adaptors[i+1]
 		}
 	}
 	return droppable
@@ -74,7 +74,7 @@ func countCombinationsSubset(adaptors []int, start int, end int) int {
 		}
 		for i, drop := range test {
 			if drop {
-				if currentJoltage + 3 < adaptors[start+i+1] {
+				if currentJoltage+3 < adaptors[start+i+1] {
 					valid = false
 					break
 				}
@@ -93,13 +93,13 @@ func countCombinationsSubset(adaptors []int, start int, end int) int {
 }
 
 func itob(b []bool, n int) {
-	for i, _ := range b {
+	for i := range b {
 		b[i] = !(n|(1<<i) > n)
 	}
 }
 
 func powInt(x, y int) int {
-    return int(math.Pow(float64(x), float64(y)))
+	return int(math.Pow(float64(x), float64(y)))
 }
 
 func min(a, b int) int {
@@ -115,12 +115,12 @@ func quicksort(arr []int) []int {
 		return arr
 	}
 
-	l, r := 0, len(arr) - 1
+	l, r := 0, len(arr)-1
 	pivot := rand.Int() % len(arr)
 
 	arr[pivot], arr[r] = arr[r], arr[pivot]
 
-	for i, _ := range arr {
+	for i := range arr {
 		if arr[i] < arr[r] {
 			arr[l], arr[i] = arr[i], arr[l]
 			l++
@@ -136,7 +136,7 @@ func quicksort(arr []int) []int {
 }
 
 func countDifferences(adaptors []int) (int, int) {
-	oneJoltDiffs, threeJoltDiffs := 1,1
+	oneJoltDiffs, threeJoltDiffs := 1, 1
 	for i, jolt := range adaptors[1:] {
 		diff := jolt - adaptors[i]
 

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
+	"bufio"
+	"bytes"
 	"fmt"
 	"log"
-	"bytes"
-	"bufio"
+	"os"
 	"strconv"
 )
 
@@ -47,11 +47,10 @@ func isLineValid(line []byte) bool {
 	return p.isCompliant(password)
 }
 
-
 type Policy struct {
 	character byte
-	idx_1 int
-	idx_2 int
+	idx_1     int
+	idx_2     int
 }
 
 func (p Policy) isCompliant(password []byte) bool {

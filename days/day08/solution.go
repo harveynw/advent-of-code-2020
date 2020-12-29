@@ -1,11 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
-	"bytes"
 )
 
 func main() {
@@ -80,13 +80,13 @@ func executeCommand(command []byte) (int, int) {
 		} else {
 			return 1, -amount
 		}
-    } else if strings.HasPrefix(cmd, "jmp") {
-        if command[4] == '+' {
+	} else if strings.HasPrefix(cmd, "jmp") {
+		if command[4] == '+' {
 			return amount, 0
 		} else {
 			return -amount, 0
 		}
-    } else {
-    	return 1, 0
-    }
+	} else {
+		return 1, 0
+	}
 }

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
+	"bufio"
+	"bytes"
 	"fmt"
 	"log"
-	"bytes"
-	"bufio"
+	"os"
 	"strconv"
 )
 
@@ -47,11 +47,10 @@ func isLineValid(line []byte) bool {
 	return p.isCompliant(password)
 }
 
-
 type Policy struct {
 	character byte
-	min int
-	max int
+	min       int
+	max       int
 }
 
 func (p Policy) isCompliant(password []byte) bool {
@@ -59,7 +58,7 @@ func (p Policy) isCompliant(password []byte) bool {
 	for _, val := range password {
 		if val == p.character {
 			count++
-		} 
+		}
 	}
 
 	return count >= p.min && count <= p.max

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"io/ioutil"
 	"bytes"
+	"fmt"
+	"io/ioutil"
+	"log"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 		passData = bytes.ReplaceAll(passData, []byte("\n"), []byte(" "))
 		fields := bytes.Split(passData, []byte(" "))
 
-		passport := make(map[string]string) 
+		passport := make(map[string]string)
 		for _, field := range fields {
 			parsed := bytes.Split(field, []byte(":"))
 			if len(parsed) == 2 {

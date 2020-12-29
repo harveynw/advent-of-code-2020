@@ -1,10 +1,10 @@
-package main 
+package main
 
 import (
-	"fmt"
-	"log"
 	"bytes"
+	"fmt"
 	"io/ioutil"
+	"log"
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 			for _, b := range person {
 				choices[b]++
 
-				if i == threshold - 1 && choices[b] == threshold {
+				if i == threshold-1 && choices[b] == threshold {
 					count++
 				}
 			}

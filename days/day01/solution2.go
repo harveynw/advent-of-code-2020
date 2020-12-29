@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"log"
 	"bufio"
+	"fmt"
+	"log"
+	"os"
 	"strconv"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	for i, expense_1 := range expenses {
 		for j, expense_2 := range expenses {
 			for k, expense_3 := range expenses {
-				if i != j && j != k && i != k && expense_1 + expense_2 + expense_3 == 2020 {
+				if i != j && j != k && i != k && expense_1+expense_2+expense_3 == 2020 {
 					fmt.Println(expense_1 * expense_2 * expense_3)
 					return
 				}

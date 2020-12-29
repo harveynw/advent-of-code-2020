@@ -1,22 +1,23 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
-	"bytes"
-	"strconv"
 	"sort"
+	"strconv"
 )
 
 func main() {
 	adaptors := Adaptors("input.txt")
-	
+
 	oneDiffs, threeDiffs := countDifferences(adaptors)
 	fmt.Printf("Solution 1: %v\n", oneDiffs*threeDiffs)
 	fmt.Printf("Solution 2: %v\n", combinations(adaptors, len(adaptors)-1))
 }
 
 var cache map[int]int = make(map[int]int)
+
 func combinations(adaptors []int, i int) int {
 	if val, ok := cache[i]; ok {
 		return val
@@ -28,13 +29,13 @@ func combinations(adaptors []int, i int) int {
 
 	c := 0
 	for j := 1; j <= 3; j++ {
-		if i-j >= 0 && adaptors[i-j] >= adaptors[i] - 3 {
+		if i-j >= 0 && adaptors[i-j] >= adaptors[i]-3 {
 			c += combinations(adaptors, i-j)
 		}
 	}
 	cache[i] = c
 	return c
-} 
+}
 
 func Adaptors(filename string) []int {
 	data, _ := ioutil.ReadFile("input.txt")
@@ -48,7 +49,7 @@ func Adaptors(filename string) []int {
 }
 
 func countDifferences(adaptors []int) (int, int) {
-	oneJoltDiffs, threeJoltDiffs := 0,0
+	oneJoltDiffs, threeJoltDiffs := 0, 0
 	for i, jolt := range adaptors[1:] {
 		diff := jolt - adaptors[i]
 
