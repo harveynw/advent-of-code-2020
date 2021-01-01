@@ -23,19 +23,21 @@ func main() {
 			break
 		}
 	}
+	fmt.Printf("Solution 1: %v\n", solution)
 
 	setLength := 2
-	for {
-		for i := 0; i+setLength-1 < len(numbers); i++ {
-			if contiguousSum(i, i+setLength-1, numbers) == solution {
-				min, max := minMaxIntSlice(numbers[i : i+setLength])
-				fmt.Printf("Solution 1: %v\n", solution)
-				fmt.Printf("Solution 2: %v\n", min+max)
-				return
+	Problem2:
+		for {
+			for i := 0; i+setLength-1 < len(numbers); i++ {
+				if contiguousSum(i, i+setLength-1, numbers) == solution {
+					min, max := minMaxIntSlice(numbers[i : i+setLength])
+					solution = min + max
+					break Problem2
+				}
 			}
+			setLength++
 		}
-		setLength++
-	}
+	fmt.Printf("Solution 2: %v\n", solution)
 }
 
 func valid(idx int, numbers []int) bool {
